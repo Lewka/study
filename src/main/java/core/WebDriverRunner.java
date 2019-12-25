@@ -1,20 +1,19 @@
 package core;
 
+import org.openqa.selenium.WebDriver;
+
 public class WebDriverRunner {
 
-    private static org.openqa.selenium.WebDriver threadDriver;
+    private static final DriverThreadLocalContainer threadDriver = new DriverThreadLocalContainer();
 
     private WebDriverRunner() {
     }
 
-    public static org.openqa.selenium.WebDriver getDriver() {
-        if (threadDriver == null) {
-            threadDriver = (DriverFactory.initDriver());
-        }
-        return threadDriver;
+    public static WebDriver getDriver() {
+        return threadDriver.getAndCheckWebDriver();
     }
 
     public static void driverQuit() {
-        threadDriver.quit();
+        threadDriver.closeWebDriver();
     }
 }
