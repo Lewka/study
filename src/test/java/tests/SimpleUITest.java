@@ -15,9 +15,9 @@ class SimpleUITest extends BaseTest {
     @Tag("Smoke")
     @DisplayName("Мой крутой тест")
     @Description("Какое то описание")
-    @TmsLink("N-253")
     @Severity(SeverityLevel.BLOCKER)
     void test() {
+        // test
         driver.get("http://automationpractice.com/index.php");
         new LoginPage(driver).typePassword("asd")
                 .makeScreenshot(driver);
